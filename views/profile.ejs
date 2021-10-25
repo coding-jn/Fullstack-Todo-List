@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <div class="row">
+        <!-- LOCAL INFORMATION -->
+        <div>
+
+          <section id='intro'>
+            <% if (user.local.email) { %>
+                <form action="/items" method="POST">
+                    <input type='text' name='item'>
+                    <button id='add' type='submit'>Add to List</button>
+                </form>
+            <% } %>
+          </section>
+
+          <section id='list'>
+            <% for(var i=0; i<items.length; i++) {%>
+                <li class="item">
+                  <span><i class="far fa-square" aria-hidden="true"></i></span>                
+                  <span><%= items[i].item %></span>
+                </li>
+            <% } %>
+          </section>
+
+          <section id='reset'>
+            <button id='clearAll' class="btn btn-secondary btn-lg" type='submit'>Clear List</button>
+          </section>
+
+        </div>
+
+        <footer>
+          <a href="/logout">Logout</a>
+        </footer>
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
